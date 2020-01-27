@@ -20,7 +20,15 @@ namespace BookStatistics.Test
             Assert.That(text == "This is a test");
         }
 
-       
+       [Test]
+       public void CheckWordsShouldCountTheNumberOfWordsInFile()
+        {
+            var text = "This is a test";
+
+            var wordCount = BookReader.CheckWords(text);
+
+            Assert.That(wordCount == 4);
+        }
         //to do: test to confirm the correct text is read
 
         // to do: test that the statistics are calculated correctly
