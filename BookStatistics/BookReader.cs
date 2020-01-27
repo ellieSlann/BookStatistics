@@ -13,14 +13,5 @@ namespace BookStatistics
 
             return text;
         }
-
-        public static int CheckWords(string text)
-        {
-            string[] wordArray;
-
-            wordArray = text.Split(" ");
-
-            return wordArray.Length;
-        }
     }
 }
