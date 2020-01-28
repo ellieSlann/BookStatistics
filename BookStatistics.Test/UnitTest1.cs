@@ -6,11 +6,6 @@ namespace BookStatistics.Test
 {
     public class Tests
     {
-<<<<<<< HEAD
-        [SetUp]
-        public void Setup()
-        {
-=======
         public WordCounter _WordCounter;
         public string _word;
         public string _text;
@@ -21,7 +16,6 @@ namespace BookStatistics.Test
             _WordCounter = new WordCounter();
             _word = "This";
             _text = "This is a test";
->>>>>>> Start of building models
         }
 
         [Test]
@@ -29,15 +23,6 @@ namespace BookStatistics.Test
         {
             var fileLocation = "C:\\MyProjects\\BookStatistics\\test-book.txt";
 
-<<<<<<< HEAD
-            var text = BookReader.ReadBook(fileLocation);
-
-            Assert.That(text == "This is a test");
-        }
-
-       
-        //to do: test to confirm the correct text is read
-=======
             Assert.That(BookReader.ReadBook(fileLocation) == _text);
         }
 
@@ -71,7 +56,6 @@ namespace BookStatistics.Test
             Assert.IsInstanceOf<BookModel>(populatedBookModel);
             Assert.That(populatedBookModel.WordsInBook[0].ToString() == _word);
         }
->>>>>>> Start of building models
 
         // to do: test that the statistics are calculated correctly
 

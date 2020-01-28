@@ -14,9 +14,5 @@ namespace BookStatistics
             return text;
         }
 
-        public static int CheckWords()
-        {
-
-        }
     }
 }
