@@ -13,6 +13,5 @@ namespace BookStatistics
 
             return text;
         }
-
     }
 }

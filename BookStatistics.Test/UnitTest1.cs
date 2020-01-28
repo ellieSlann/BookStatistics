@@ -7,6 +7,7 @@ namespace BookStatistics.Test
     public class Tests
     {
         public WordCounter _WordCounter;
+
         public string _word;
         public string _text;
 
@@ -22,7 +23,6 @@ namespace BookStatistics.Test
         public void ReadBookShouldReadFromTestFile()
         {
             var fileLocation = "C:\\MyProjects\\BookStatistics\\test-book.txt";
-
             Assert.That(BookReader.ReadBook(fileLocation) == _text);
         }
 
@@ -45,6 +45,29 @@ namespace BookStatistics.Test
 
             Assert.IsInstanceOf<WordModel>(wordInModel);
             Assert.That(wordInModel.Characters == 4);
+            Assert.That(BookReader.ReadBook(fileLocation) == "This is a test");
+        }
+
+        [Test]
+        public void CheckWordsShouldCountTheNumberOfWordsInFile()
+        {
+            var text = "This is a test";
+
+            Assert.That(_WordCounter.CreateWordArray(text).Length == 4);
+        }
+
+        [Test]
+        public void FindWordLengthShouldReturnLengthOfWord()
+        {
+            var word = "This";
+
+            Assert.That(_WordCounter.FindWordLength(word) == 4) ;
+        }
+
+        [Test]
+        public void PutWordInModelShouldReturnBookModel()
+        {
+
         }
 
         [Test]
