@@ -45,31 +45,9 @@ namespace BookStatistics.Test
 
             Assert.IsInstanceOf<WordModel>(wordInModel);
             Assert.That(wordInModel.Characters == 4);
-            Assert.That(BookReader.ReadBook(fileLocation) == "This is a test");
         }
 
-        [Test]
-        public void CheckWordsShouldCountTheNumberOfWordsInFile()
-        {
-            var text = "This is a test";
-
-            Assert.That(_WordCounter.CreateWordArray(text).Length == 4);
-        }
-
-        [Test]
-        public void FindWordLengthShouldReturnLengthOfWord()
-        {
-            var word = "This";
-
-            Assert.That(_WordCounter.FindWordLength(word) == 4) ;
-        }
-
-        [Test]
-        public void PutWordInModelShouldReturnBookModel()
-        {
-
-        }
-
+    
         [Test]
         public void PopulateBookShouldAddWordsToNewBookModel()
         {
