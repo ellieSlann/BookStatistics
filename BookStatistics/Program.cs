@@ -2,17 +2,25 @@
 
 namespace BookStatistics
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        private static readonly string path = @"C:\MyProjects\BookStatistics\dracula-book.txt";
+
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            var _bookBuilder = new BookBuilder();
+            var wordCounter = new WordCounter();
 
-            // to do: read from text file - how do we access text file? where will text file be? (currently in solution folder)
+            var text = BookReader.ReadBook(path);
+            var myBook = _bookBuilder.PopulateBook(text);
 
-            //To Do: run statistics on file
+            var maxWordLength = wordCounter.FindMaxWordLength(myBook);
 
-            //To Do: output statistics to console.
+            Console.WriteLine(maxWordLength);
+
+            //ToDo: run statistics on file
+
+            //ToDo: output statistics to console.
 
         }
     }
