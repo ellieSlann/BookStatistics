@@ -13,7 +13,8 @@ namespace BookStatistics
         {
             return new WordModel
             {
-                Characters = inputword.Length
+                Characters = inputword.Length,
+                WholeWord = inputword
             };
         }
 
@@ -22,7 +23,7 @@ namespace BookStatistics
             var newBook = new BookModel();
             foreach (string w in Book)
             {
-                newBook.Words.Add(PutWordInModel(w));
+                newBook.WordsInBook.Add(PutWordInModel(w));
             }
             return newBook;
         }

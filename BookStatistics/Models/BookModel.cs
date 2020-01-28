@@ -6,6 +6,7 @@ namespace BookStatistics.Models
 {
     public class BookModel
     {
-        public List<WordModel> Words { get; set; }
+        public List<WordModel> WordsInBook { get; set; }
+        public string WholeBook { get; set; }
     }
 }

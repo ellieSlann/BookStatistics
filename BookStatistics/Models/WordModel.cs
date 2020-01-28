@@ -7,5 +7,6 @@ namespace BookStatistics.Models
     public class WordModel
     {
         public int Characters { get; set; }
+        public string WholeWord { get; set; }
     }
 }
