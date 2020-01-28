@@ -1,43 +1,54 @@
-using System.IO;
 using BookStatistics.Models;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace BookStatistics.Test
 {
     public class WordCounterTests
     {
         public WordCounter _WordCounter;
-        public BookBuilder _bookBuilder;
-
+        public BookModel book;
         public string _word;
-        public string _text;
+
 
         [SetUp]
         public void Setup()
         {
-            _bookBuilder = new BookBuilder();
             _WordCounter = new WordCounter();
             _word = "This";
-            _text = "This is a test";
+
+            book = new BookModel
+            {
+                WholeBook = "This is a test",
+                WordsInBook = new List<string>() { "This", "is", "a", "test" }
+            };
         }
 
         [Test]
-        public void ReadBookShouldReadFromTestFile()
+        public void CountWordsOfLengthShouldReturnNumberOfWordsWithSameLength()
         {
-            var fileLocation = "C:\\MyProjects\\BookStatistics\\test-book.txt";
-            Assert.That(BookReader.ReadBook(fileLocation) == _text);
+            var countOfWords = _WordCounter.CountWordsOfRequestedLength(2, book);
+
+            Assert.That(countOfWords == 1);
         }
 
         [Test]
-        public void FindWordLengthShouldReturnLengthOfWord()
+        public void FindMaxWordLengthShouldReturnTheLengthOfLongestWordInBook()
         {
-            Assert.That(_WordCounter.FindWordLength(_word) == 4) ;
+            var longestWord = _WordCounter.FindMaxWordLength(book);
+
+            Assert.That(longestWord.Item1 == 4);
         }
 
-  
+        [Test]
+        public void CreateReportShouldReturnPopulatedReport()
+        {
+            var report = _WordCounter.CreateReport(book);
+            //Assert.That(report.)
+        }
 
-        // to do: test that the statistics are calculated correctly
+        // todo: test that the statistics are calculated correctly
 
-        //To Do: test that program outputs to console??
+        //ToDo: test that program outputs to console??
     }
 }

@@ -7,14 +7,7 @@ namespace BookStatistics
     {
         public List<string> CreateWordList(string text) => new List<string>(text.Split(" "));
 
-        public WordModel PutWordInModel(string inputword)
-        {
-            return new WordModel
-            {
-                Characters = inputword.Length,
-                WholeWord = inputword
-            };
-        }
+        //Todo: need to split on punctuation as well as white space ie clean up punctuation with regex
 
         public BookModel PopulateBook(string Book)
         {
