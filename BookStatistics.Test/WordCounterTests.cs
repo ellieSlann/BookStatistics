@@ -6,18 +6,16 @@ namespace BookStatistics.Test
 {
     public class WordCounterTests
     {
-        public WordCounter _WordCounter;
-        public BookModel book;
-        public string _word;
+        public WordCounter wordCounter;
+        public BookModel bookModel;
 
 
         [SetUp]
         public void Setup()
         {
-            _WordCounter = new WordCounter();
-            _word = "This";
+            wordCounter = new WordCounter();
 
-            book = new BookModel
+            bookModel = new BookModel
             {
                 WholeBook = "This is a test",
                 WordsInBook = new List<string>() { "This", "is", "a", "test" }
@@ -27,7 +25,7 @@ namespace BookStatistics.Test
         [Test]
         public void CountWordsOfLengthShouldReturnNumberOfWordsWithSameLength()
         {
-            var countOfWords = _WordCounter.CountWordsOfRequestedLength(2, book);
+            var countOfWords = wordCounter.CountWordsOfRequestedLength(2, bookModel);
 
             Assert.That(countOfWords == 1);
         }
@@ -35,7 +33,7 @@ namespace BookStatistics.Test
         [Test]
         public void FindMaxWordLengthShouldReturnTheLengthOfLongestWordInBook()
         {
-            var longestWord = _WordCounter.FindMaxWordLength(book);
+            var longestWord = wordCounter.FindMaxWordLength(bookModel);
 
             Assert.That(longestWord.Item1 == 4);
         }
@@ -43,12 +41,13 @@ namespace BookStatistics.Test
         [Test]
         public void CreateReportShouldReturnPopulatedReport()
         {
-            var report = _WordCounter.CreateReport(book);
-            var val = report[3];
-
+            var report = wordCounter.CreateReport(bookModel);
            
             Assert.IsInstanceOf<Dictionary<int, int>>(report);
-            Assert.That(val == 0);
+            Assert.That(report[1] == 1);
+            Assert.That(report[2] == 1);
+            Assert.That(report[3] == 0);
+            Assert.That(report[4] == 2);
         }
 
         //ToDo: test that program outputs to console??
