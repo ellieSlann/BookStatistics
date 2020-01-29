@@ -21,7 +21,8 @@ namespace BookStatistics.Test
         [Test]
         public void CreateWordListShouldCountTheNumberOfWordsInFile()
         {
-            Assert.That(bookBuilder.CreateWordList(text).Count == 4);
+            var wordlist = bookBuilder.CreateWordList(text);
+            Assert.That(wordlist.Count == 4);
         }
 
         [Test]
