@@ -44,10 +44,12 @@ namespace BookStatistics.Test
         public void CreateReportShouldReturnPopulatedReport()
         {
             var report = _WordCounter.CreateReport(book);
-            //Assert.That(report.)
-        }
+            var val = report[3];
 
-        // todo: test that the statistics are calculated correctly
+           
+            Assert.IsInstanceOf<Dictionary<int, int>>(report);
+            Assert.That(val == 0);
+        }
 
         //ToDo: test that program outputs to console??
     }

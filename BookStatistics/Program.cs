@@ -8,17 +8,15 @@ namespace BookStatistics
 
         static void Main()
         {
-            var _bookBuilder = new BookBuilder();
+            var bookBuilder = new BookBuilder();
             var wordCounter = new WordCounter();
 
             var text = BookReader.ReadBook(path);
-            var myBook = _bookBuilder.PopulateBook(text);
+            var myBook = bookBuilder.PopulateBook(text);
 
-            var maxWordLength = wordCounter.FindMaxWordLength(myBook);
+            var report = wordCounter.CreateReport(myBook);
 
-            Console.WriteLine(maxWordLength);
-
-            //ToDo: run statistics on file
+            Console.WriteLine(report);
 
             //ToDo: output statistics to console.
 
