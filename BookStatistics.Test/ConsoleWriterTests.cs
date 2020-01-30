@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Moq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace BookStatistics.Test
 {
@@ -11,7 +7,7 @@ namespace BookStatistics.Test
         [Test]
         public void WriteToConsoleShouldOutputDictionaryToConsole()
         {
-            var consoleWriter = Mock.Of<ConsoleWriter>();
+            //var consoleWriter = Mock.Of<ConsoleWriter>();
 
             //Assert.That(consoleWriter.WriteToConsole)
         }

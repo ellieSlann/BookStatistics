@@ -2,9 +2,9 @@
 
 namespace BookStatistics
 {
-    public static class BookReader
+    public static class TextReader
     {
-        public static string ReadBook(string path)
+        public static string ReadText(string path)
         {
             var text = File.ReadAllText(path);
 

@@ -16,7 +16,7 @@ namespace BookStatistics.Test
         public void ReadBookShouldReadFromTestFile()
         {
             var fileLocation = "C:\\MyProjects\\BookStatistics\\test-book.txt";
-            Assert.That(BookReader.ReadBook(fileLocation) == text);
+            Assert.That(TextReader.ReadText(fileLocation) == text);
         }
     }
 }

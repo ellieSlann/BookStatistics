@@ -8,6 +8,6 @@ namespace BookStatistics
 
         Dictionary<int, int> CreateReport();
 
-        (int wordLength, string longWord) FindMaxWordLength();
+        (int maxWordLength, string longestWord) FindLongestWord();
     }
 }
