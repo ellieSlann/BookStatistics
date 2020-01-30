@@ -10,13 +10,18 @@ namespace BookStatistics
         {
             var bookBuilder = new BookBuilder();
             var wordCounter = new WordCounter();
+            var consoleWriter = new ConsoleWriter();
 
             var text = BookReader.ReadBook(path);
             var myBook = bookBuilder.PopulateBook(text);
 
+            var maxlength = wordCounter.FindMaxWordLength(myBook);
+
             var report = wordCounter.CreateReport(myBook);
 
-            Console.WriteLine(report);
+            Console.WriteLine(maxlength);
+            consoleWriter.WriteToConsole(report);
+
 
             //ToDo: output statistics to console.
 
