@@ -13,19 +13,19 @@ namespace BookStatistics.Test
         [SetUp]
         public void Setup()
         {
-            wordCounter = new WordCounter();
-
             bookModel = new BookModel
             {
                 WholeBook = "This is a test",
                 WordsInBook = new List<string>() { "This", "is", "a", "test" }
             };
+
+            wordCounter = new WordCounter(bookModel);
         }
 
         [Test]
         public void CountWordsOfLengthShouldReturnNumberOfWordsWithSameLength()
         {
-            var countOfWords = wordCounter.CountWordsOfRequestedLength(2, bookModel);
+            var countOfWords = wordCounter.CountWordsOfRequestedLength(2);
 
             Assert.That(countOfWords == 1);
         }
@@ -33,15 +33,15 @@ namespace BookStatistics.Test
         [Test]
         public void FindMaxWordLengthShouldReturnTheLengthOfLongestWordInBook()
         {
-            var longestWord = wordCounter.FindMaxWordLength(bookModel);
+            var longestWord = wordCounter.FindLongestWord();
 
-            Assert.That(longestWord.Item1 == 4);
+            Assert.That(longestWord.maxWordLength == 4);
         }
 
         [Test]
         public void CreateReportShouldReturnPopulatedReport()
         {
-            var report = wordCounter.CreateReport(bookModel);
+            var report = wordCounter.CreateReport();
            
             Assert.IsInstanceOf<Dictionary<int, int>>(report);
             Assert.That(report[1] == 1);
@@ -49,7 +49,5 @@ namespace BookStatistics.Test
             Assert.That(report[3] == 0);
             Assert.That(report[4] == 2);
         }
-
-        //ToDo: test that program outputs to console??
     }
 }

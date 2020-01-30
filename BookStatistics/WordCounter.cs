@@ -3,25 +3,32 @@ using System.Collections.Generic;
 
 namespace BookStatistics
 {
-    public class WordCounter
+    public class WordCounter : IWordCounter
     {
-        public int CountWordsOfRequestedLength(int length, BookModel bookModel)
+        private readonly BookModel _bookModel;
+
+        public WordCounter(BookModel bookModel)
+        {
+            _bookModel = bookModel;
+        }
+
+        public int CountWordsOfRequestedLength(int length)
         {
             var count = 0;
-            foreach (string word in bookModel.WordsInBook)
+            foreach (string word in _bookModel.WordsInBook)
             {
                 if (word.Length == length) count++;
             }
             return count;
         }
 
-        public Dictionary<int, int> CreateReport(BookModel bookModel)
+        public Dictionary<int, int> CreateReport()
         {
             var report = new Dictionary<int, int>();
-            var maxWordLength = FindMaxWordLength(bookModel);
-            for (var i = 1; i <= maxWordLength.Item1; i++)
+            var longestWord = FindLongestWord();
+            for (var i = 1; i <= longestWord.maxWordLength; i++)
             {
-                var numberOfWords = CountWordsOfRequestedLength(i, bookModel);
+                var numberOfWords = CountWordsOfRequestedLength(i);
 
                     report.Add(i, numberOfWords);
             }
@@ -29,21 +36,21 @@ namespace BookStatistics
             return report;
         }
 
-        public (int, string) FindMaxWordLength(BookModel book)
+        public (int maxWordLength, string longestWord) FindLongestWord()
         {
-            var MaxWordLength = 0;
+            var maxWordLength = 0;
             var longestWord = "";
 
-            foreach (string word in book.WordsInBook)
+            foreach (string word in _bookModel.WordsInBook)
             {
-                if (word.Length > MaxWordLength) 
+                if (word.Length > maxWordLength) 
                 {
-                    MaxWordLength = word.Length;
+                    maxWordLength = word.Length;
                     longestWord = word;
                 }
             }
 
-            return (MaxWordLength, longestWord);
+            return (maxWordLength, longestWord);
         }
     }
 }

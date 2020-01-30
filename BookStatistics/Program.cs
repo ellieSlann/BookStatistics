@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BookStatistics
+﻿namespace BookStatistics
 {
     public class Program
     {
@@ -8,23 +6,15 @@ namespace BookStatistics
 
         static void Main()
         {
-            var bookBuilder = new BookBuilder();
-            var wordCounter = new WordCounter();
+            var bookBuilder = new BookBuilder();            
             var consoleWriter = new ConsoleWriter();
 
-            var text = BookReader.ReadBook(path);
+            var text = TextReader.ReadText(path);
             var myBook = bookBuilder.PopulateBook(text);
 
-            var maxlength = wordCounter.FindMaxWordLength(myBook);
+            var wordCounter = new WordCounter(myBook);
 
-            var report = wordCounter.CreateReport(myBook);
-
-            Console.WriteLine(maxlength);
-            consoleWriter.WriteToConsole(report);
-
-
-            //ToDo: output statistics to console.
-
+            consoleWriter.WriteToConsole(wordCounter.CreateReport());
         }
     }
 }
