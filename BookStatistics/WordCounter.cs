@@ -1,4 +1,5 @@
 ﻿using BookStatistics.Models;
+using System.Collections.Generic;
 
 namespace BookStatistics
 {
@@ -14,16 +15,18 @@ namespace BookStatistics
             return count;
         }
 
-        public void CreateReport(BookModel bookModel)
+        public Dictionary<int, int> CreateReport(BookModel bookModel)
         {
+            var report = new Dictionary<int, int>();
             var maxWordLength = FindMaxWordLength(bookModel);
-            var report = new ReportModel();
-            for (var i = 0; i <= maxWordLength.Item1; i++)
+            for (var i = 1; i <= maxWordLength.Item1; i++)
             {
-                report.WordLength.Add(i);
-                var wordCount = CountWordsOfRequestedLength(i, bookModel);
-                
+                var numberOfWords = CountWordsOfRequestedLength(i, bookModel);
+
+                    report.Add(i, numberOfWords);
             }
+
+            return report;
         }
 
         public (int, string) FindMaxWordLength(BookModel book)
@@ -42,8 +45,5 @@ namespace BookStatistics
 
             return (MaxWordLength, longestWord);
         }
-
-
-        //todo: group words of same length together.
     }
 }
