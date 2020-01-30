@@ -7,10 +7,15 @@ namespace BookStatistics
     {
         public void WriteToConsole(Dictionary<int, int> report)
         {
+            Console.WriteLine("Report:");
+            Console.WriteLine("Chosen book contains");
+
             foreach ( KeyValuePair<int, int> i in report)
             {
-                Console.WriteLine($"Book contains {i.Value} words of length {i.Key}" );
+                Console.WriteLine($"{i.Value} words of {i.Key} letters");
             }
+
+            
         }
     }
 }

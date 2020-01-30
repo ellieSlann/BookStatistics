@@ -35,7 +35,7 @@ namespace BookStatistics.Test
         {
             var longestWord = wordCounter.FindLongestWord();
 
-            Assert.That(longestWord.Item1 == 4);
+            Assert.That(longestWord.maxWordLength == 4);
         }
 
         [Test]
