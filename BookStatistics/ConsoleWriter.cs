@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-<<<<<<< Updated upstream
-using System.Text;
-=======
->>>>>>> Stashed changes
 
 namespace BookStatistics
 {
